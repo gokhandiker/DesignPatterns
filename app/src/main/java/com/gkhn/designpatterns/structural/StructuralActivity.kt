@@ -3,6 +3,7 @@ package com.gkhn.designpatterns.structural
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.gkhn.designpatterns.R
+import com.gkhn.designpatterns.structural.adapter.example1.*
 import com.gkhn.designpatterns.structural.decorator.example1.Coffee
 import com.gkhn.designpatterns.structural.decorator.example1.SimpleCoffee
 import com.gkhn.designpatterns.structural.decorator.example1.WithMilk
@@ -15,6 +16,24 @@ class StructuralActivity : AppCompatActivity() {
         setContentView(R.layout.activity_structural)
         runDecoratorExample2()
 
+        runAdapterExample1()
+    }
+
+    fun runAdapterExample1(){
+        var cryptA : Crypt = CryptA()
+        cryptA.encrypt("Hasan")
+        cryptA.decrypt("deHasan")
+
+        var cryptB  : Crypt = CryptB()
+        cryptB.encrypt("Veli")
+        cryptB.decrypt("deVeli")
+
+        var codeX = CodeX()
+
+        var cryptX : Crypt = CodeXAdapter(codeX)
+
+        cryptX.encrypt("Ahmet")
+        cryptX.decrypt("deAhmet")
     }
 
     fun runDecoratorExample1() {
